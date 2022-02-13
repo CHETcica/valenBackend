@@ -24,15 +24,15 @@ exports.getOneUser = tryCatch(async (req, res, next) => {
   });
 });
 exports.updateUser = tryCatch(async (req, res, next) => {
-  const user = await User.findById(req.params.id, req.body, {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
   res.status(200).json({
     status: 'success',
+    message: 'Update succesfully',
     user,
   });
 });
-
 exports.deleteUser = tryCatch(async (req, res, next) => {
   await User.findByIdAndDelete(req.params.id);
   res.status(204).json({
