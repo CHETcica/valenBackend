@@ -14,6 +14,19 @@ exports.signUpReq = async (body, next) => {
     username: Joi.string().required().example('chet'),
     email: Joi.string().email().required().example('test@gmail.com'),
     password: Joi.string().required().valid('12345678'),
+    gender: Joi.string().required(),
+    born: Joi.date().required(),
+    phone: Joi.string(),
+    location: Joi.array(),
+    passion: Joi.object(),
+    interested: Joi.string(),
+    bio: Joi.string(),
+    social: Joi.object(),
+    userimageprofile: Joi.string(),
+    userimage: Joi.array(),
+    frind_id: Joi.array(),
+    
+
   });
   return await schema
     .validateAsync(body)

@@ -17,6 +17,8 @@ const userSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: true,
+    // required: false,
+
   },
   born: {
     type: Date,
@@ -49,7 +51,7 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
   userimageprofile: {
-    type: [String],
+    type: String,
     required: true,
   },
   userimage: {
