@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const AppError = require("../utility/AppError");
 const tryCatch = require("../utility/tryCatch");
+const jwt = require('jsonwebtoken');
 const { signUpReq, signInReq } = require("../validator/request/userRequest");
 
 exports.signUp = tryCatch(async (req, res, next) => {
@@ -16,7 +17,8 @@ exports.signUp = tryCatch(async (req, res, next) => {
 });
 exports.signIn = tryCatch(async (req, res, next) => {
   const reqBody = await signInReq(req.body, next);
-
+  
+  
   const user = await User.findOne({ username: reqBody.username }).select(
     "+password"
   );
