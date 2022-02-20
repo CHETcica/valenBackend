@@ -11,15 +11,23 @@ const handleErrorValidate = async (validateFn, body, next) => {
 
 exports.signUpReq = async (body, next) => {
   const schema = Joi.object({
-    // username: Joi.string().required().example('ohm'),
-    // email: Joi.string().email().required().example('test@gmail.com'),
-    // password: Joi.string().required().valid('12345678'),
-  });
+    username: Joi.string().required().example('chet'),
+    email: Joi.string().email().required().example('test@gmail.com'),
+    password: Joi.string().required().valid('12345678'),
+    gender: Joi.string().required(),
+    born: Joi.date().required(),
+    phone: Joi.string(),
+    location: Joi.array(),
+    passion: Joi.object(),
+    interested: Joi.string(),
+    bio: Joi.string(),
+    social: Joi.object(),
+    userimageprofile: Joi.string(),
+    userimage: Joi.array(),
+    frind_id: Joi.array(),
+    
 
-  // return await schema
-  //   .validateAsync(body)
-  //   .catch((err) => next(new AppError('', 400, 'joi', err)));
-  // return await handleErrorValidate(schema.validateAsync, body, next);
+  });
   return await schema
     .validateAsync(body)
     .catch((err) => next(new AppError('', 400, 'joi', err)));

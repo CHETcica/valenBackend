@@ -8,10 +8,10 @@ const sendError = (err, req, res) => {
     });
   }
 
-  return res.status(err.statusCode).json({
-    status: 'error',
-    message: 'Something went wrong',
-  });
+  // return res.status(err.statusCode).json({
+  //   status: 'error',
+  //   message: 'Something went wrong',
+  // });
 
   return res.status(err.statusCode).json({
     status: 'error',
