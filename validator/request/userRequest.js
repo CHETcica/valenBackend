@@ -13,7 +13,8 @@ exports.signUpReq = async (body, next) => {
   const schema = Joi.object({
     username: Joi.string().required().example('chet'),
     email: Joi.string().email().required().example('test@gmail.com'),
-    password: Joi.string().required().valid('12345678'),
+    // password: Joi.string().required().valid('12345678'),
+    password: Joi.string().required(),
     gender: Joi.string().required(),
     born: Joi.date().required(),
     phone: Joi.string(),

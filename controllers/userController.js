@@ -17,8 +17,6 @@ exports.signUp = tryCatch(async (req, res, next) => {
 });
 exports.signIn = tryCatch(async (req, res, next) => {
   const reqBody = await signInReq(req.body, next);
-  
-  
   const user = await User.findOne({ username: reqBody.username }).select(
     "+password"
   );
