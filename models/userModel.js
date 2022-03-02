@@ -17,8 +17,7 @@ const userSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    required: true,
-    // required: false,
+    required: false,
   },
   born: {
     type: Date,
@@ -40,7 +39,7 @@ const userSchema = new mongoose.Schema({
   },
   interested: {
     type: String,
-    required: true,
+    required: false,
   },
   bio: {
     type: String,
@@ -52,7 +51,7 @@ const userSchema = new mongoose.Schema({
   },
   userimageprofile: {
     type: String,
-    required: true,
+    required: false,
   },
   userimage: {
     type: [String],

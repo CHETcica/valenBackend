@@ -15,7 +15,7 @@ exports.signUpReq = async (body, next) => {
     email: Joi.string().email().required().example('test@gmail.com'),
     // password: Joi.string().required().valid('12345678'),
     password: Joi.string().required(),
-    gender: Joi.string().required(),
+    gender: Joi.string(),
     born: Joi.date().required(),
     phone: Joi.string(),
     location: Joi.array(),
