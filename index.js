@@ -6,7 +6,11 @@ const cors = require("cors");
 dotenv.config({ path: "config.env" });
 const errorMiddleware = require("./middleware/errorMiddleware");
 const AppError = require("./utility/AppError");
+
 const userRouter = require("./routes/userRoute");
+const passionRouter = require("./routes/passionRoute");
+const sexRouter = require("./routes/sexulRoute");
+
 const app = express();
 
 app.use(express.json());
@@ -21,6 +25,8 @@ app.get("/", (req, res, next) => {
 });
 
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/passion", passionRouter);
+app.use("/api/v1/sexul", sexRouter);
 
 app.all("*", (req, res, next) => {
   res.status(404).json({
