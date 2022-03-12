@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
 const AppError = require("../utility/AppError");
 const tryCatch = require("../utility/tryCatch");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const { signUpReq, signInReq } = require("../validator/request/userRequest");
 
 exports.signUp = tryCatch(async (req, res, next) => {
@@ -20,21 +20,28 @@ exports.signIn = tryCatch(async (req, res, next) => {
   const user = await User.findOne({ username: reqBody.username }).select(
     "+password"
   );
-
   if (!user || !(await user.checkPassword(reqBody.password, user.password))) {
     return next(new AppError("Incorrect username or password", 401));
   }
-
   const token = jwt.sign({ id: user._id }, process.env.JWT_KEY, {
     expiresIn: process.env.JWT_EXP,
   });
-
   res.json({
     status: "success",
     user,
     token,
   });
 });
+
+exports.randomUser = tryCatch(async (req, res, next) => {
+  // const user = await User.find({ gender: req.body.interested });
+  const user = await User.findOne(req.body);
+  res.status(201).json({
+    status: "success",
+    user,
+  });
+});
+
 exports.createUesr = tryCatch(async (req, res, next) => {
   const user = await User.create(req.body);
   res.status(201).json({

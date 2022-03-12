@@ -34,8 +34,8 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
   passion: {
-    type: [Object],
-    required: true,
+    type: Object,
+    required: false,
   },
   interested: {
     type: String,
@@ -90,7 +90,7 @@ const userSchema = new mongoose.Schema({
       type: [String],
       required: false,
     },
-    unlike: {
+    unlikes: {
       type: [String],
       required: false,
     },
