@@ -49,6 +49,7 @@ exports.createUesr = tryCatch(async (req, res, next) => {
     user,
   });
 });
+
 exports.getAllUser = tryCatch(async (req, res, next) => {
   const user = await User.find();
   res.status(201).json({
@@ -56,6 +57,7 @@ exports.getAllUser = tryCatch(async (req, res, next) => {
     user,
   });
 });
+
 exports.getOneUser = tryCatch(async (req, res, next) => {
   const user = await User.findById(req.params.id);
   res.status(200).json({
@@ -63,6 +65,7 @@ exports.getOneUser = tryCatch(async (req, res, next) => {
     user,
   });
 });
+
 exports.updateUser = tryCatch(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -73,6 +76,7 @@ exports.updateUser = tryCatch(async (req, res, next) => {
     user,
   });
 });
+
 exports.deleteUser = tryCatch(async (req, res, next) => {
   await User.findByIdAndDelete(req.params.id);
   res.status(204).json({
