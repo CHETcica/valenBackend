@@ -57,11 +57,11 @@ const userSchema = new mongoose.Schema({
     type: [String],
     required: false,
   },
-  frind_id: {
+  frindId: {
     type: [String],
     required: false,
   },
-  user_details: {
+  userDetails: {
     higth: {
       type: Number,
       required: false,
@@ -98,6 +98,8 @@ const userSchema = new mongoose.Schema({
       type: [String],
       required: false,
     },
+    
+
   },
 });
 

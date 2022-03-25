@@ -5,9 +5,12 @@ const jwt = require("jsonwebtoken");
 const { signUpReq, signInReq } = require("../validator/request/userRequest");
 
 exports.signUp = tryCatch(async (req, res, next) => {
+  console.log(req.body);
   const reqBody = await signUpReq(req.body, next);
-
-  const user = await User.create(reqBody);
+  const user = new User(reqBody)
+  // const user = await User.insert(reqBody);
+  await user.save() 
+  console.log(user);
   user.password = undefined;
 
   res.status(201).json({
@@ -34,8 +37,14 @@ exports.signIn = tryCatch(async (req, res, next) => {
 });
 
 exports.randomUser = tryCatch(async (req, res, next) => {
-  // const user = await User.find({ gender: req.body.interested });
-  const user = await User.findOne(req.body);
+  // const user = await User.findOne(req.body.gender);
+  const user = await User.findOne({
+    passion: req.body.passion,
+    gender: req.body.gender,
+    _id: {$nin: req.body._id},
+    // _id: {$nin: req.body._id},
+    // _id: {$nin: req.body._id}
+  });
   res.status(201).json({
     status: "success",
     user,
