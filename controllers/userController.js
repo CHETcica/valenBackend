@@ -39,9 +39,10 @@ exports.signIn = tryCatch(async (req, res, next) => {
 exports.randomUser = tryCatch(async (req, res, next) => {
   // const user = await User.findOne(req.body.gender);
   const user = await User.findOne({
-    passion: req.body.passion,
     gender: req.body.gender,
-    _id: {$nin: req.body._id},
+    passion: {$in: req.body.passion},
+    _id: {$nin: req.body._id || req.body.likes || req.body.unlikes},
+
     // _id: {$nin: req.body._id},
     // _id: {$nin: req.body._id}
   });

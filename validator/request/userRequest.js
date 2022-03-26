@@ -19,13 +19,13 @@ exports.signUpReq = async (body, next) => {
     born: Joi.date().required(),
     phone: Joi.string(),
     location: Joi.array(),
-    passion: Joi.object(),
+    passion: Joi.array(),
     interested: Joi.string(),
     bio: Joi.string(),
     social: Joi.object(),
     userimageprofile: Joi.string(),
     userimage: Joi.array(),
-    frind_id: Joi.array(),
+    friendId: Joi.array(),
     
 
   });

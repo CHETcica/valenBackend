@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
   passion: {
-    type: Object,
+    type: [String],
     required: false,
   },
   interested: {
@@ -57,7 +57,7 @@ const userSchema = new mongoose.Schema({
     type: [String],
     required: false,
   },
-  frindId: {
+  friendId: {
     type: [String],
     required: false,
   },

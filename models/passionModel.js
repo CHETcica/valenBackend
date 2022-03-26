@@ -5,6 +5,10 @@ const passionSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    nameTH: {
+        type: String,
+        required: true,
+    },
     type: {
         type: String,
         required: true,

@@ -5,7 +5,11 @@ const sexulSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    definition: {
+    definitionEN: {
+        type: String,
+        required: true,
+    },
+    definitionTH: {
         type: String,
         required: true,
     },
