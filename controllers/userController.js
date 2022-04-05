@@ -42,7 +42,8 @@ exports.randomUser = tryCatch(async (req, res, next) => {
     gender: req.body.gender,
     passion: {$in: req.body.passion},
     _id: {$nin: req.body._id || req.body.likes || req.body.unlikes},
-
+    
+    
     // _id: {$nin: req.body._id},
     // _id: {$nin: req.body._id}
   });
@@ -82,7 +83,6 @@ exports.updateUser = tryCatch(async (req, res, next) => {
   });
   res.status(200).json({
     status: "success",
-    message: "Update succesfully",
     user,
   });
 });

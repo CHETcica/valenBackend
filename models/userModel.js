@@ -29,10 +29,41 @@ const userSchema = new mongoose.Schema({
     // required: true,
     required: false,
   },
+  
   location: {
-    type: [Number],
-    required: false,
-  },
+    bsonType: 'object',
+    required: [
+      'type',
+      'coordinates'
+    ],
+    properties: {
+      type: {
+        bsonType: 'string',
+        'enum': [
+          'Point'
+        ]
+      },
+      coordinates: {
+        bsonType: [
+          'array'
+        ],
+        minItems: 2,
+        maxItems: 2,
+        items: [
+          {
+            bsonType: 'double',
+            minimum: -180,
+            maximum: 180
+          },
+          {
+            bsonType: 'double',
+            minimum: -90,
+            maximum: 90
+          }
+        ]
+      }
+    },
+  },  
   passion: {
     type: [String],
     required: false,
@@ -98,9 +129,21 @@ const userSchema = new mongoose.Schema({
       type: [String],
       required: false,
     },
-    
-
   },
+  userSetting :{
+    MaxDistance:{
+      type: Number,
+      required: false,
+    },
+    MinAge:{
+      type: Number,
+      required: false,
+    },
+    MaxAge:{
+      type: Number,
+      required: false,
+    },
+  }
 });
 
 userSchema.pre("save", async function (next) {
