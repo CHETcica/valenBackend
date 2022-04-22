@@ -29,13 +29,12 @@ const userSchema = new mongoose.Schema({
     // required: true,
     required: false,
   },
-  
   location: {
     bsonType: 'object',
-    required: [
-      'type',
-      'coordinates'
-    ],
+    // required: [
+    //   'type',
+    //   'coordinates'
+    // ],
     properties: {
       type: {
         bsonType: 'string',
@@ -93,7 +92,7 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
   userDetails: {
-    higth: {
+    height: {
       type: Number,
       required: false,
     },
@@ -122,6 +121,10 @@ const userSchema = new mongoose.Schema({
       required: false,
     },
     unlikes: {
+      type: [String],
+      required: false,
+    },
+    superlikes: {
       type: [String],
       required: false,
     },

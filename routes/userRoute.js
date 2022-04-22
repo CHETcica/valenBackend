@@ -11,6 +11,9 @@ router
   .get("/showuser", userController.getAllUser)
   .get("/showuser/:id", userController.getOneUser)
   .patch("/updateuser/:id", userController.updateUser)
+  .patch("/like/:id", userController.likeUser)
+  .patch("/unlike/:id", userController.unlikeUser)
+  .patch("/superlike/:id", userController.superlikeUser)
   .delete("/deleteuser/:id", userController.deleteUser);
 
 module.exports = router;

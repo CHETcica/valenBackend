@@ -7,9 +7,9 @@ const { signUpReq, signInReq } = require("../validator/request/userRequest");
 exports.signUp = tryCatch(async (req, res, next) => {
   console.log(req.body);
   const reqBody = await signUpReq(req.body, next);
-  const user = new User(reqBody)
+  const user = new User(reqBody);
   // const user = await User.insert(reqBody);
-  await user.save() 
+  await user.save();
   console.log(user);
   user.password = undefined;
 
@@ -40,12 +40,14 @@ exports.randomUser = tryCatch(async (req, res, next) => {
   // const user = await User.findOne(req.body.gender);
   const user = await User.findOne({
     gender: req.body.gender,
-    passion: {$in: req.body.passion},
-    _id: {$nin: req.body._id || req.body.likes || req.body.unlikes},
-    
-    
-    // _id: {$nin: req.body._id},
-    // _id: {$nin: req.body._id}
+    passion: { $in: req.body.passion },
+    _id: { $nin: req.body._id },
+    location: {
+      $near: {
+        $geometry: { type: "Point", coordinates: req.body.location },
+        $maxDistance: req.body.MaxDistance,
+      },
+    },
   });
   res.status(201).json({
     status: "success",
@@ -77,8 +79,44 @@ exports.getOneUser = tryCatch(async (req, res, next) => {
   });
 });
 
+exports.likeUser = tryCatch(async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(req.params.id, {
+    userDetails: {
+      likes: req.body.likes 
+    }
+  });
+  res.status(200).json({
+    status: "success",  
+    user,
+  });
+});
+
+exports.unlikeUser = tryCatch(async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(req.params.id, {
+    userDetails: {
+      unlikes: req.body.unlikes 
+    }
+  });
+  res.status(200).json({
+    status: "success",  
+    user,
+  });
+});
+
+exports.superlikeUser = tryCatch(async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(req.params.id, {
+    userDetails: {
+      superlikes: req.body.superlikes 
+    }
+  });
+  res.status(200).json({
+    status: "success",  
+    user,
+  });
+});
+
 exports.updateUser = tryCatch(async (req, res, next) => {
-  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body,{
     new: true,
   });
   res.status(200).json({
