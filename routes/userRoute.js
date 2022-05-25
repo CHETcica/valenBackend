@@ -14,6 +14,7 @@ router
   .patch("/like/:id", userController.likeUser)
   .patch("/unlike/:id", userController.unlikeUser)
   .patch("/superlike/:id", userController.superlikeUser)
+  .patch("/addfriendlist/:id", userController.addFriendUser)
   .delete("/deleteuser/:id", userController.deleteUser);
 
 module.exports = router;

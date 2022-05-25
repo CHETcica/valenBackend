@@ -135,6 +135,20 @@ exports.superlikeUser = tryCatch(async (req, res, next) => {
   });
 });
 
+exports.addFriendUser = tryCatch(async (req, res, next) => {
+  const mydata = await User.findById(req.params.id);
+  let mynewFriendList = mydata.friendId.concat(req.body.friendId)
+  const myFriendList = await User.findByIdAndUpdate(req.params.id, {
+    friendId: mynewFriendList
+  });
+
+
+  res.status(200).json({
+    status: "success",  
+    myFriendList
+  });
+});
+
 exports.updateUser = tryCatch(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.params.id, req.body,{
     new: true,
