@@ -141,11 +141,16 @@ exports.addFriendUser = tryCatch(async (req, res, next) => {
   const myFriendList = await User.findByIdAndUpdate(req.params.id, {
     friendId: mynewFriendList
   });
-
+  const youdata = await User.findById(req.body.friendId);
+  let younewFriendList = mydata.friendId.concat(req.params.id)
+  const youFriendList = await User.findByIdAndUpdate(req.body.friendId, {
+    friendId: younewFriendList
+  });
 
   res.status(200).json({
     status: "success",  
-    myFriendList
+    mynewFriendList,
+    younewFriendList
   });
 });
 
