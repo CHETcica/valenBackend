@@ -164,6 +164,18 @@ exports.updateUser = tryCatch(async (req, res, next) => {
   });
 });
 
+exports.updateUserAddress = tryCatch(async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(req.params.id, {
+    userDetails: {
+      address: req.body.address
+  }
+  });
+  res.status(200).json({
+    status: "success",
+    user,
+  });
+});
+
 exports.deleteUser = tryCatch(async (req, res, next) => {
   await User.findByIdAndDelete(req.params.id);
   res.status(204).json({

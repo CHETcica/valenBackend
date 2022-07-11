@@ -11,6 +11,7 @@ router
   .get("/showuser", userController.getAllUser)
   .get("/showuser/:id", userController.getOneUser)
   .patch("/updateuser/:id", userController.updateUser)
+  .patch("/updateuseraddress/:id", userController.updateUserAddress)
   .patch("/like/:id", userController.likeUser)
   .patch("/unlike/:id", userController.unlikeUser)
   .patch("/superlike/:id", userController.superlikeUser)
