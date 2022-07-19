@@ -176,6 +176,16 @@ exports.updateUserAddress = tryCatch(async (req, res, next) => {
   });
 });
 
+exports.updateUserPassion = tryCatch(async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(req.params.id, {
+      passion: req.body.passion
+  });
+  res.status(200).json({
+    status: "success",
+    user,
+  });
+});
+
 exports.deleteUser = tryCatch(async (req, res, next) => {
   await User.findByIdAndDelete(req.params.id);
   res.status(204).json({
