@@ -10,6 +10,7 @@ const AppError = require("./utility/AppError");
 const userRouter = require("./routes/userRoute");
 const passionRouter = require("./routes/passionRoute");
 const sexRouter = require("./routes/sexulRoute");
+const historyRouter = require("./routes/historyRoute");
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.get("/", (req, res, next) => {
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/passion", passionRouter);
 app.use("/api/v1/sexul", sexRouter);
+app.use("/api/v1/history", historyRouter);
 
 app.all("*", (req, res, next) => {
   res.status(404).json({

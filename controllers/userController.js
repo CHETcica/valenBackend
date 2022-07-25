@@ -49,26 +49,7 @@ exports.randomUser = tryCatch(async (req, res, next) => {
       },
     },
   });
-  // {
-  //   gender: "women",
-  //   passion: { $in: [
-  //               "gaming",
-  //               "music",
-  //               "coding"
-  //           ] },
-  //   _id: { $nin: [
-  //               "6214a044e543ba936f58d2ea"
-  //           ] },
-  //   location: {
-  //     $near: {
-  //       $geometry: { type: "Point", coordinates: [
-  //                   100.070823,
-  //                   13.58569
-  //               ] },
-  //       $maxDistance: 500000,
-  //     },
-  //   },
-  // }
+  
   res.status(201).json({
     status: "success",
     user,

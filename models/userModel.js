@@ -91,6 +91,7 @@ const userSchema = new mongoose.Schema({
     type: [String],
     required: false,
   },
+  
   userDetails: {
     height: {
       type: Number,
