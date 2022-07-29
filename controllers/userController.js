@@ -174,3 +174,16 @@ exports.deleteUser = tryCatch(async (req, res, next) => {
     user: null,
   });
 });
+
+exports.getAllFriend = tryCatch(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  const friend = user.friendId
+  let friendList = []
+  friend.map((el)=>(
+    // user = await User.findById(el),
+    friendList.push(user)
+  ))
+  res.status(201).json({
+    friendList,
+  });
+});

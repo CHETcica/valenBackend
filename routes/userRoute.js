@@ -10,6 +10,8 @@ router
   .post("/randomuser", userController.randomUser)
   .get("/showuser", userController.getAllUser)
   .get("/showuser/:id", userController.getOneUser)
+  .get("/showFriend/:id", userController.getAllFriend)
+  
   .patch("/updateuser/:id", userController.updateUser)
   .patch("/updateuseraddress/:id", userController.updateUserAddress)
   .patch("/updateuserpassion/:id", userController.updateUserPassion)

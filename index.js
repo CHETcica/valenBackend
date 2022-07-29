@@ -40,7 +40,7 @@ app.all("*", (req, res, next) => {
 app.use(errorMiddleware);
 
 mongoose
-  .connect(process.env.MONGO_DB)
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("Connecting to database successfully"))
   .catch((err) => console.log("Can not to connected to database"));
 
